@@ -1,0 +1,58 @@
+{% extends 'dashboard/base/main.html' %}
+
+{% block content %}
+			<div class="row">
+			    <div class="col-lg-12">
+			        <h1 class="page-header">پست ها</h1>
+			    </div>
+			    <!-- /.col-xll-12 -->
+			</div>
+			<!-- /.row -->
+			<div class="row">
+				<div class="col-lg-12">
+			    	<div class="card">
+                        <div class="card-header">
+                            <i class="fa fa-table fa-fw"></i> جدول پست ها
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table class="table table-bordered table-hover table-striped" id="dataTables-posts">
+                                <thead>
+	                                <tr>
+	                                    <th>ردیف</th>
+	                                    <th>عنوان</th>
+	                                    <th>محتوا</th>
+	                                    <th>کد</th>
+	                                </tr>
+                                </thead>
+                                <tbody>
+                                	{% for post in posts %}
+                                    <tr>
+                                        <td>{{ post.id }}</td>
+                                        <td>{{ post.title }}</td>
+                                        <td>{{ post.content }}</td>
+                                        <td>{{ post.id }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                        	</table>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+			    </div>
+			</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    $(document).ready(function () {
+        $('#dataTables-posts').DataTable({
+            responsive: true,
+            drawCallback: function () {
+                $('#dataTables-example_wrapper .row:last-child').addClass('mb-1 align-items-baseline');
+            }
+        });
+    });
+</script>
+{% endblock %}

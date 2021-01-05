@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa">
+
+{% include 'dashboard/base/head.html' %}
+
+<body>
+
+<div id="wrapper">
+
+    {% include 'dashboard/base/header.html' %}
+    <div class="d-md-flex">
+        {% include 'dashboard/base/sidebar.html' %}
+
+        <div id="page-wrapper" class="p-4">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </div>
+
+</div>
+
+{% include 'dashboard/base/script.html' %}
+
+</body>
+
+</html>

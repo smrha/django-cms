@@ -1,60 +1,100 @@
 {% extends 'dashboard/base/main.html' %}
 
-{% block title %}پست ها{% endblock %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block style %}
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{% static 'assets/plugins/datatables-bs4/css/dataTables.bootstrap4.css' %}">
+{% endblock %}
 
 {% block content %}
-			<div class="row">
-			    <div class="col-lg-12">
-			        <h1 class="page-header">پست ها</h1>
-			    </div>
-			    <!-- /.col-xll-12 -->
-			</div>
-			<!-- /.row -->
-			<div class="row">
-				<div class="col-lg-12">
-			    	<div class="card">
-                        <div class="card-header">
-                            <i class="fa fa-table fa-fw"></i> جدول پست ها
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">پست ها</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item active">پست ها</li>
+                        <li class="breadcrumb-item"><a href="#">خانه</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <section class="col-lg-12 connectedSortable">
+                    <div class="card">
+                        <div class="card-header d-flex p-0">
+                            <h3 class="card-title p-3">
+                                <i class="fas fa-table mr-1"></i>
+                                  لیست پست ها
+                            </h3>
                         </div>
-                        <!-- /.card-header -->
                         <div class="card-body">
-                            <table class="table table-bordered table-hover table-striped" id="dataTables-posts">
+                            <table id="example1" class="table table-bordered table-striped">
                                 <thead>
-	                                <tr>
-	                                    <th>ردیف</th>
-	                                    <th>عنوان</th>
-	                                    <th>محتوا</th>
-	                                    <th>کد</th>
-	                                </tr>
+                                    <tr>
+                                        <th>ردیف</th>
+                                        <th>عنوان</th>
+                                        <th>نویسنده</th>
+                                        <th>وضعیت انتشار</th>
+                                        <th>CSS grade</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                	{% for post in posts %}
+                                    {% for post in posts %}
                                     <tr>
                                         <td>{{ post.id }}</td>
                                         <td>{{ post.title }}</td>
-                                        <td>{{ post.content }}</td>
-                                        <td>{{ post.id }}</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>
-                        	</table>
-                            <!-- /.row -->
+                                <tfoot>
+                                    <tr>
+                                        <th>ردیف</th>
+                                        <th>عنوان</th>
+                                        <th>نویسنده</th>
+                                        <th>وضعیت انتشار</th>
+                                        <th>CSS grade</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
                         </div>
-                        <!-- /.card-body -->
                     </div>
-			    </div>
-			</div>
+                </section>
+            </div>
+        </div>
+    </section>
 {% endblock %}
 
 {% block script %}
+
+<!-- DataTables -->
+<script src="{% static 'assets/plugins/datatables/jquery.dataTables.js' %}"></script>
+<script src="{% static 'assets/plugins/datatables-bs4/js/dataTables.bootstrap4.js' %}"></script>
+
 <script>
-    $(document).ready(function () {
-        $('#dataTables-posts').DataTable({
-            responsive: true,
-            drawCallback: function () {
-                $('#dataTables-example_wrapper .row:last-child').addClass('mb-1 align-items-baseline');
-            }
-        });
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
     });
+  });
 </script>
+
 {% endblock %}

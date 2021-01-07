@@ -1,33 +1,33 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="fa">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>CMS | {% block title %}{% endblock %}</title>
+  {% include 'dashboard/base/style.html' %}
+  {% block style %}{% endblock %}
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
 
-{% include 'dashboard/base/head.html' %}
+  {% include 'dashboard/base/navbar.html' %}
 
-<body>
+  {% include 'dashboard/base/sidebar.html' %}
 
-<div id="wrapper">
+  <div class="content-wrapper">
 
-    {% include 'dashboard/base/header.html' %}
-    <div class="d-md-flex">
-        {% include 'dashboard/base/sidebar.html' %}
+    {% block content %}
 
-        <div id="page-wrapper" class="p-4">
-            {% block content %}
+    {% endblock %}
 
-            {% endblock %}
-        </div>
-    </div>
+  </div>
 
+{% include 'dashboard/base/footer.html' %}
 </div>
 
 {% include 'dashboard/base/script.html' %}
-
-{% block script %}
-
-{% endblock %}
-
+{% block script %}{% endblock %}
 </body>
-
 </html>

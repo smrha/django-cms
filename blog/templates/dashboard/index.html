@@ -1,82 +1,51 @@
-{% load static %}
+{% extends 'dashboard/base/main.html' %}
 
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>CMS | Dashboard</title>
-  {% include 'dashboard/base/style.html' %}
-</head>
-<body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
+{% block title %}Dashboard{% endblock %}
 
-  {% include 'dashboard/base/navbar.html' %}
+{% block style %}
 
-  {% include 'dashboard/base/sidebar.html' %}
+{% endblock %}
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+{% block content %}
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Dashboard</h1>
-          </div><!-- /.col -->
+            <h1 class="m-0 text-dark">page title</h1>
+          </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v1</li>
+              <li class="breadcrumb-item"><a href="#">page parent</a></li>
+              <li class="breadcrumb-item active">page name</li>
             </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- /.content-header -->
 
-    <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <!-- Main row -->
         <div class="row">
-          <!-- Left col -->
           <section class="col-lg-12 connectedSortable">
-            <!-- Custom tabs (Charts with tabs)-->
             <div class="card">
               <div class="card-header d-flex p-0">
                 <h3 class="card-title p-3">
-                  <i class="fas fa-chart-pie mr-1"></i>
-                  Sales
+                  <i class="fas fa-table mr-1"></i>
+                  TITLE
                 </h3>
-              </div><!-- /.card-header -->
+              </div>
               <div class="card-body">
                 <div class="tab-content p-0">
-                  <!-- Morris chart - Sales -->
-                  <div class="chart tab-pane active" id="revenue-chart"
-                       style="position: relative; height: 300px;">
-                      <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>                         
-                   </div>
-                  <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
-                    <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>                         
-                  </div>  
+
                 </div>
-              </div><!-- /.card-body -->
+              </div>
             </div>
-
           </section>
-          <!-- right col -->
         </div>
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
+      </div>
     </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-{% include 'dashboard/base/footer.html' %}
-</div>
-<!-- ./wrapper -->
+{% endblock %}
 
-{% include 'dashboard/base/script.html' %}
-</body>
-</html>
+{% block script %}
+
+{% endblock %}

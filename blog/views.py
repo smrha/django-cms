@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from datetime import datetime
+import pytz
 
 from .models import Post
 
@@ -16,7 +18,18 @@ def post_list(request):
 
 def post_new(request):
 	if request.method == 'POST':
-		form = NewPostForm(request.POST)
+		# update_data = request.POST.copy()
+		# update_data.update({'publish': datetime.strptime(request.POST['publish'], '%Y/%m/%d %H:%M:%S')})
+		mydata = request.POST.copy()
+		mydata.update({'publish': pytz.utc.localize(datetime.strptime(request.POST['publish'], '%Y/%m/%d %H:%M:%S'))})
+		print(mydata['publish'])
+		form = NewPostForm(data=mydata) 
+		print(form)
+		
+		# now_aware = pytz.utc.localize(unaware)
+		# mydata['publish'] = datetime.strptime(request.POST['publish'], '%Y/%m/%d %H:%M:%S')
+		
+		print(form.is_valid())
 		if form.is_valid():
 			form.save()
 			return redirect('post_list')

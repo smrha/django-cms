@@ -53,8 +53,8 @@ class NewPostForm(forms.ModelForm):
 			)
 		)
 	thumbnail = forms.ImageField(
-		label = '',
-		widget = forms.FileInput(
+		label = 'عکس شاخص :',
+		widget = forms.ClearableFileInput(
 			attrs = {
 				'class': 'form-control'
 				}
@@ -62,5 +62,5 @@ class NewPostForm(forms.ModelForm):
 		)
 
 	class Meta:
-		model = Post 
-		fields = ['title', 'content', 'slug', 'publish', 'status']
+		model = Post
+		fields = ['title', 'content', 'slug', 'publish', 'status', 'thumbnail']

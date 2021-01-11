@@ -23,10 +23,27 @@ def post_new(request):
 			form.save()
 			return redirect('post_list')
 		else:
-			return render(request, 'dashboard/post-new.html', {'form': form})
+			return render(request, 'dashboard/post-form.html', {'form': form})
 	else:
 		form = NewPostForm()
 		context = {
 			'form': form
 		}
-	return render(request, 'dashboard/post-new.html', context)
+	return render(request, 'dashboard/post-form.html', context)
+
+def post_edit(request, pk):
+	if request.method == "POST":
+		post = Post.objects.get(id=pk)
+		form = NewPostForm(request.POST or None, request.FILES or None, instance=post)
+		if form.is_valid():
+			form.save()
+			return redirect('post_list')
+		else:
+			return render(request, 'dashboard/post-form.html', {'form': form})
+	else:
+		post = Post.objects.get(id=pk)
+		form = NewPostForm(instance=post)
+		context = {
+			'form': form
+		}
+		return render(request, 'dashboard/post-form.html', context)

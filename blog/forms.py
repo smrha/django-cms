@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.models import User
 from .models import Post
 
 class NewPostForm(forms.ModelForm):
@@ -60,7 +61,17 @@ class NewPostForm(forms.ModelForm):
 				}
 			)
 		)
+	author = forms.ModelChoiceField(
+		queryset = User.objects.all(),
+		empty_label = "ندارد",
+		label = 'نویسنده :',
+		widget = forms.Select(
+			attrs = {
+				'class': 'form-control'
+				}
+			)
+		)
 
 	class Meta:
 		model = Post
-		fields = ['title', 'content', 'slug', 'publish', 'status', 'thumbnail']
+		fields = ['title', 'content', 'slug', 'publish', 'status', 'thumbnail', 'author']

@@ -5,4 +5,5 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('post/', views.post_list, name='post_list'),
     path('post/new/', views.post_new, name='post_new'),
+    path('post/edit/<int:pk>', views.post_edit, name='post_edit'),
 ]

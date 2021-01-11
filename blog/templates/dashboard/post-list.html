@@ -50,17 +50,17 @@
                                         <th>عنوان</th>
                                         <th>نویسنده</th>
                                         <th>وضعیت انتشار</th>
-                                        <th>CSS grade</th>
+                                        <th>تاریخ انتشار</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {% for post in posts %}
                                     <tr>
-                                        <td>{{ post.id }}</td>
-                                        <td>{{ post.title }}</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td><a href="{% url 'post_edit' post.id %}">{{ post.title }}</a></td>
+                                        <td>{{ post.get_fullname }}</td>
+                                        <td>{{ post.get_status }}</td>
+                                        <td>{{ post.get_datetime }}</td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>
@@ -70,7 +70,7 @@
                                         <th>عنوان</th>
                                         <th>نویسنده</th>
                                         <th>وضعیت انتشار</th>
-                                        <th>CSS grade</th>
+                                        <th>تاریخ انتشار</th>
                                     </tr>
                                 </tfoot>
                             </table>
